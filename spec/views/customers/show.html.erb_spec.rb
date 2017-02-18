@@ -15,6 +15,29 @@ RSpec.describe "customers/show", type: :view do
       :home_phone => "Home Phone",
       :fax => "Fax"
     ))
+
+    @addresses = assign(:addresses, [
+      Address.create!(
+        :label => "Label",
+        :address_1 => "Address 1",
+        :address_2 => "Address 2",
+        :city => "City",
+        :state => "State",
+        :zip => "Zip",
+        :country => "Country",
+        :customer => @customer
+      ),
+      Address.create!(
+        :label => "Label",
+        :address_1 => "Address 1",
+        :address_2 => "Address 2",
+        :city => "City",
+        :state => "State",
+        :zip => "Zip",
+        :country => "Country",
+        :customer => @customer
+      )
+    ])
   end
 
   it "renders attributes in <p>" do
@@ -30,5 +53,14 @@ RSpec.describe "customers/show", type: :view do
     expect(rendered).to match(/Work Phone/)
     expect(rendered).to match(/Home Phone/)
     expect(rendered).to match(/Fax/)
+
+
+    expect(rendered).to match(/Label/)
+    expect(rendered).to match(/Address 1/)
+    expect(rendered).to match(/Address 2/)
+    expect(rendered).to match(/City/)
+    expect(rendered).to match(/State/)
+    expect(rendered).to match(/Zip/)
+    expect(rendered).to match(/Country/)
   end
 end

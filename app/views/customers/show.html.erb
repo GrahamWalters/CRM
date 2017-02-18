@@ -1,64 +1,73 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @customer.title %>
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <h1><%= @customer.title %>. <%= @customer.first_name %> <%= @customer.middle_name %> <%= @customer.last_name %></h1>
 
-<p>
-  <strong>First name:</strong>
-  <%= @customer.first_name %>
-</p>
+    <p class="h4"><small><%= @customer.position %> <br/> <%= @customer.organization %></small></p>
 
-<p>
-  <strong>Middle name:</strong>
-  <%= @customer.middle_name %>
-</p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @customer.last_name %>
-</p>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Cell:</th>
+          <td><%= @customer.cell_phone %></td>
+        </tr>
+        <tr>
+          <th>Work:</th>
+          <td><%= @customer.work_phone %></td>
+        </tr>
+        <tr>
+          <th>Home:</th>
+          <td><%= @customer.home_phone %></td>
+        </tr>
+        <tr>
+          <th>Fax:</th>
+          <td><%= @customer.fax %></td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td><%= @customer.email %></td>
+        </tr>
+        <tr>
+          <th>Birthday:</th>
+          <td><%= @customer.dob %></td>
+        </tr>
 
-<p>
-  <strong>Email:</strong>
-  <%= @customer.email %>
-</p>
+        <tr>
+          <th>Addresses:</th>
+          <td>
+            <% @addresses.each do |address| %>
+              <strong><%= address.label %></strong>
+              <div class="well">
+                <div class="address-controls">
+                  <%= link_to 'Edit', edit_address_path(address), {:class => 'btn btn-sm btn-default'} %>
+                </div>
+                <address>
+                  <%= address.address_1 %> <br>
+                  <%= address.address_2 %> <%= raw "<br/>" if address.address_2.length > 0 %>
+                  <%= address.city %>, <%= address.state %> <%= address.zip %> <br>
+                  <%= address.country %>
+                </address>
+              </div>
+            <% end %>
 
-<p>
-  <strong>Date of Birth:</strong>
-  <%= @customer.dob %>
-</p>
+            <%= link_to 'New Address', new_address_path %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-<p>
-  <strong>Organization:</strong>
-  <%= @customer.organization %>
-</p>
 
-<p>
-  <strong>Position:</strong>
-  <%= @customer.position %>
-</p>
+  </div>
+</div>
 
-<p>
-  <strong>Cell phone:</strong>
-  <%= @customer.cell_phone %>
-</p>
 
-<p>
-  <strong>Work phone:</strong>
-  <%= @customer.work_phone %>
-</p>
 
-<p>
-  <strong>Home phone:</strong>
-  <%= @customer.home_phone %>
-</p>
+<br>
 
-<p>
-  <strong>Fax:</strong>
-  <%= @customer.fax %>
-</p>
+
+
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>
