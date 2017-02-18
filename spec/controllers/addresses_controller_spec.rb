@@ -32,11 +32,26 @@ RSpec.describe AddressesController, type: :controller do
   # Address. As you add validations to Address, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      :label => "Home",
+      :address_1 => "The White House",
+      :address_2 => "1600 Pennsylvania Avenue NW",
+      :city => "Washington",
+      :state => "DC",
+      :zip => "20500",
+      :country => "USA",
+      :customer => @customer
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      :label => "13 characters",
+      :address_1 => "",
+      :city => "",
+      :state => "3 c",
+      :zip => "123456"
+    }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -54,7 +69,7 @@ RSpec.describe AddressesController, type: :controller do
   describe "GET #edit" do
     it "assigns the requested address as @address" do
       address = Address.create! valid_attributes
-      get :edit, params: {id: address.to_param}, session: valid_session
+      get :edit, params: {id: address.to_param, customer_id: @customer}, session: valid_session
       expect(assigns(:address)).to eq(address)
     end
   end
@@ -63,30 +78,30 @@ RSpec.describe AddressesController, type: :controller do
     context "with valid params" do
       it "creates a new Address" do
         expect {
-          post :create, params: {address: valid_attributes}, session: valid_session
+          post :create, params: {customer_id: @customer, address: valid_attributes}, session: valid_session
         }.to change(Address, :count).by(1)
       end
 
       it "assigns a newly created address as @address" do
-        post :create, params: {address: valid_attributes}, session: valid_session
+        post :create, params: {customer_id: @customer, address: valid_attributes}, session: valid_session
         expect(assigns(:address)).to be_a(Address)
         expect(assigns(:address)).to be_persisted
       end
 
       it "redirects to the created address" do
-        post :create, params: {address: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Address.last)
+        post :create, params: {customer_id: @customer, address: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(customer_path(@customer))
       end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved address as @address" do
-        post :create, params: {address: invalid_attributes}, session: valid_session
+        post :create, params: {customer_id: @customer, address: invalid_attributes}, session: valid_session
         expect(assigns(:address)).to be_a_new(Address)
       end
 
       it "re-renders the 'new' template" do
-        post :create, params: {address: invalid_attributes}, session: valid_session
+        post :create, params: {customer_id: @customer, address: invalid_attributes}, session: valid_session
         expect(response).to render_template("new")
       end
     end
@@ -100,34 +115,34 @@ RSpec.describe AddressesController, type: :controller do
 
       it "updates the requested address" do
         address = Address.create! valid_attributes
-        put :update, params: {id: address.to_param, address: new_attributes}, session: valid_session
+        put :update, params: {id: address.to_param, customer_id: @customer, address: new_attributes}, session: valid_session
         address.reload
         skip("Add assertions for updated state")
       end
 
       it "assigns the requested address as @address" do
         address = Address.create! valid_attributes
-        put :update, params: {id: address.to_param, address: valid_attributes}, session: valid_session
+        put :update, params: {id: address.to_param, customer_id: @customer, address: valid_attributes}, session: valid_session
         expect(assigns(:address)).to eq(address)
       end
 
       it "redirects to the address" do
         address = Address.create! valid_attributes
-        put :update, params: {id: address.to_param, address: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(address)
+        put :update, params: {id: address.to_param, customer_id: @customer, address: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(customer_path(@customer))
       end
     end
 
     context "with invalid params" do
       it "assigns the address as @address" do
         address = Address.create! valid_attributes
-        put :update, params: {id: address.to_param, address: invalid_attributes}, session: valid_session
+        put :update, params: {id: address.to_param, customer_id: @customer, address: invalid_attributes}, session: valid_session
         expect(assigns(:address)).to eq(address)
       end
 
       it "re-renders the 'edit' template" do
         address = Address.create! valid_attributes
-        put :update, params: {id: address.to_param, address: invalid_attributes}, session: valid_session
+        put :update, params: {id: address.to_param, customer_id: @customer, address: invalid_attributes}, session: valid_session
         expect(response).to render_template("edit")
       end
     end
@@ -137,14 +152,14 @@ RSpec.describe AddressesController, type: :controller do
     it "destroys the requested address" do
       address = Address.create! valid_attributes
       expect {
-        delete :destroy, params: {id: address.to_param}, session: valid_session
+        delete :destroy, params: {id: address.to_param, customer_id: @customer}, session: valid_session
       }.to change(Address, :count).by(-1)
     end
 
     it "redirects to the addresses list" do
       address = Address.create! valid_attributes
-      delete :destroy, params: {id: address.to_param}, session: valid_session
-      expect(response).to redirect_to(addresses_url)
+      delete :destroy, params: {id: address.to_param, customer_id: @customer}, session: valid_session
+      expect(response).to redirect_to(customer_path(@customer))
     end
   end
 

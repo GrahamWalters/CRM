@@ -40,7 +40,11 @@ RSpec.describe CustomersController, type: :controller do
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      first_name: '',
+      last_name: '',
+      email: 'not-an-email'
+    }
   }
 
   # This should return the minimal set of values that should be in the session
