@@ -1,16 +1,6 @@
 class AddressesController < ApplicationController
-  before_action :set_address, only: [:show, :edit, :update, :destroy]
-
-  # GET /addresses
-  # GET /addresses.json
-  def index
-    @addresses = Address.all
-  end
-
-  # GET /addresses/1
-  # GET /addresses/1.json
-  def show
-  end
+  before_action :set_address, only: [:edit, :update, :destroy]
+  before_action :set_customer
 
   # GET /addresses/new
   def new
@@ -24,11 +14,11 @@ class AddressesController < ApplicationController
   # POST /addresses
   # POST /addresses.json
   def create
-    @address = Address.new(address_params)
+    @address = Address.new(address_params.merge({:customer_id => params[:customer_id]}))
 
     respond_to do |format|
       if @address.save
-        format.html { redirect_to @address, notice: 'Address was successfully created.' }
+        format.html { redirect_to @customer, notice: 'Address was successfully created.' }
         format.json { render :show, status: :created, location: @address }
       else
         format.html { render :new }
@@ -42,7 +32,7 @@ class AddressesController < ApplicationController
   def update
     respond_to do |format|
       if @address.update(address_params)
-        format.html { redirect_to @address, notice: 'Address was successfully updated.' }
+        format.html { redirect_to @customer, notice: 'Address was successfully updated.' }
         format.json { render :show, status: :ok, location: @address }
       else
         format.html { render :edit }
@@ -56,7 +46,7 @@ class AddressesController < ApplicationController
   def destroy
     @address.destroy
     respond_to do |format|
-      format.html { redirect_to addresses_url, notice: 'Address was successfully destroyed.' }
+      format.html { redirect_to @customer, notice: 'Address was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,8 +57,12 @@ class AddressesController < ApplicationController
       @address = Address.find(params[:id])
     end
 
+    def set_customer
+      @customer = Customer.find(params[:customer_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def address_params
-      params.require(:address).permit(:label, :address_1, :address_2, :city, :state, :zip, :country, :customer_id)
+      params.require(:address).permit(:label, :address_1, :address_2, :city, :state, :zip, :country)
     end
 end

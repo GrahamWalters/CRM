@@ -22,15 +22,14 @@ RSpec.describe "addresses/new", type: :view do
       :city => "MyString",
       :state => "MyString",
       :zip => "MyString",
-      :country => "MyString",
-      :customer => @customer
+      :country => "MyString"
     ))
   end
 
   it "renders new address form" do
     render
 
-    assert_select "form[action=?][method=?]", addresses_path, "post" do
+    assert_select "form[action=?][method=?]", customer_addresses_path(@customer), "post" do
 
       assert_select "input#address_label[name=?]", "address[label]"
 
@@ -45,8 +44,6 @@ RSpec.describe "addresses/new", type: :view do
       assert_select "input#address_zip[name=?]", "address[zip]"
 
       assert_select "input#address_country[name=?]", "address[country]"
-
-      assert_select "input#address_customer_id[name=?]", "address[customer_id]"
     end
   end
 end

@@ -20,6 +20,22 @@ require 'rails_helper'
 
 RSpec.describe AddressesController, type: :controller do
 
+  before(:each) do
+    @customer = Customer.create!(
+      :title => "MyString",
+      :first_name => "MyString",
+      :middle_name => "MyString",
+      :last_name => "MyString",
+      :email => "MyString",
+      :organization => "MyString",
+      :position => "MyString",
+      :cell_phone => "MyString",
+      :work_phone => "MyString",
+      :home_phone => "MyString",
+      :fax => "MyString"
+    )
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Address. As you add validations to Address, be sure to
   # adjust the attributes here as well.
@@ -36,25 +52,9 @@ RSpec.describe AddressesController, type: :controller do
   # AddressesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "assigns all addresses as @addresses" do
-      address = Address.create! valid_attributes
-      get :index, params: {}, session: valid_session
-      expect(assigns(:addresses)).to eq([address])
-    end
-  end
-
-  describe "GET #show" do
-    it "assigns the requested address as @address" do
-      address = Address.create! valid_attributes
-      get :show, params: {id: address.to_param}, session: valid_session
-      expect(assigns(:address)).to eq(address)
-    end
-  end
-
   describe "GET #new" do
     it "assigns a new address as @address" do
-      get :new, params: {}, session: valid_session
+      get :new, params: {customer_id: @customer}, session: valid_session
       expect(assigns(:address)).to be_a_new(Address)
     end
   end
