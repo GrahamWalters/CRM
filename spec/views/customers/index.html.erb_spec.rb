@@ -4,42 +4,34 @@ RSpec.describe "customers/index", type: :view do
   before(:each) do
     assign(:customers, [
       Customer.create!(
-        :title => "Title",
-        :first_name => "First Name",
-        :middle_name => "Middle Name",
-        :last_name => "Last Name",
-        :email => "Email",
-        :organization => "Organization",
-        :position => "Position",
-        :cell_phone => "Cell Phone",
-        :work_phone => "Work Phone",
-        :home_phone => "Home Phone",
-        :fax => "Fax"
+        :title => 'Mr',
+        :first_name => 'Barack',
+        :last_name => 'Obama',
+        :email => 'barack@whitehouse.gov',
+        :organization => 'Government',
+        :position => 'President',
+        :cell_phone => '6238155363',
       ),
       Customer.create!(
-        :title => "Title",
-        :first_name => "First Name",
-        :middle_name => "Middle Name",
-        :last_name => "Last Name",
-        :email => "Email",
-        :organization => "Organization",
-        :position => "Position",
-        :cell_phone => "Cell Phone",
-        :work_phone => "Work Phone",
-        :home_phone => "Home Phone",
-        :fax => "Fax"
+        :title => 'Mr',
+        :first_name => 'Barack',
+        :last_name => 'Obama',
+        :email => 'barack@whitehouse.gov',
+        :organization => 'Government',
+        :position => 'President',
+        :cell_phone => '6238155363'
       )
     ])
   end
 
   it "renders a list of customers" do
     render
-    assert_select "tr>td", :text => "Title".to_s, :count => 2
-    assert_select "tr>td", :text => "First Name".to_s, :count => 2
-    assert_select "tr>td", :text => "Last Name".to_s, :count => 2
-    assert_select "tr>td", :text => "Email".to_s, :count => 2
-    assert_select "tr>td", :text => "Organization".to_s, :count => 2
-    assert_select "tr>td", :text => "Position".to_s, :count => 2
-    assert_select "tr>td", :text => "Cell Phone".to_s, :count => 2
+    assert_select "tr>td", :text => "Mr".to_s, :count => 2
+    assert_select "tr>td", :text => "Barack".to_s, :count => 2
+    assert_select "tr>td", :text => "Obama".to_s, :count => 2
+    assert_select "tr>td", :text => "barack@whitehouse.gov".to_s, :count => 2
+    assert_select "tr>td", :text => "Government".to_s, :count => 2
+    assert_select "tr>td", :text => "President".to_s, :count => 2
+    assert_select "tr>td", :text => "6238155363".to_s, :count => 2
   end
 end

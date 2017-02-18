@@ -3,38 +3,38 @@ require 'rails_helper'
 RSpec.describe "customers/show", type: :view do
   before(:each) do
     @customer = assign(:customer, Customer.create!(
-      :title => "Title",
-      :first_name => "First Name",
-      :middle_name => "Middle Name",
-      :last_name => "Last Name",
-      :email => "Email",
-      :organization => "Organization",
-      :position => "Position",
-      :cell_phone => "Cell Phone",
-      :work_phone => "Work Phone",
-      :home_phone => "Home Phone",
-      :fax => "Fax"
+      :title => 'Mr',
+      :first_name => 'Barack',
+      :middle_name => 'Hussein',
+      :last_name => 'Obama',
+      :email => 'barack@whitehouse.gov',
+      :organization => 'Government',
+      :position => 'President',
+      :cell_phone => '6238155363',
+      :work_phone => '6317571761',
+      :home_phone => '8506482425',
+      :fax => '6102873673'
     ))
 
     @addresses = assign(:addresses, [
       Address.create!(
-        :label => "Label",
-        :address_1 => "Address 1",
-        :address_2 => "Address 2",
-        :city => "City",
-        :state => "State",
-        :zip => "Zip",
-        :country => "Country",
+        :label => "Home",
+        :address_1 => "The White House",
+        :address_2 => "1600 Pennsylvania Avenue NW",
+        :city => "Washington",
+        :state => "DC",
+        :zip => "20500",
+        :country => "USA",
         :customer => @customer
       ),
       Address.create!(
-        :label => "Label",
-        :address_1 => "Address 1",
-        :address_2 => "Address 2",
-        :city => "City",
-        :state => "State",
-        :zip => "Zip",
-        :country => "Country",
+        :label => "Home",
+        :address_1 => "The White House",
+        :address_2 => "1600 Pennsylvania Avenue NW",
+        :city => "Washington",
+        :state => "DC",
+        :zip => "20500",
+        :country => "USA",
         :customer => @customer
       )
     ])
@@ -42,25 +42,25 @@ RSpec.describe "customers/show", type: :view do
 
   it "renders attributes in <p>" do
     render
-    expect(rendered).to match(/Title/)
-    expect(rendered).to match(/First Name/)
-    expect(rendered).to match(/Middle Name/)
-    expect(rendered).to match(/Last Name/)
-    expect(rendered).to match(/Email/)
-    expect(rendered).to match(/Organization/)
-    expect(rendered).to match(/Position/)
-    expect(rendered).to match(/Cell Phone/)
-    expect(rendered).to match(/Work Phone/)
-    expect(rendered).to match(/Home Phone/)
-    expect(rendered).to match(/Fax/)
+    expect(rendered).to match(/Mr/)
+    expect(rendered).to match(/Barack/)
+    expect(rendered).to match(/Hussein/)
+    expect(rendered).to match(/Obama/)
+    expect(rendered).to match(/barack@whitehouse.gov/)
+    expect(rendered).to match(/Government/)
+    expect(rendered).to match(/President/)
+    expect(rendered).to match(/6238155363/)
+    expect(rendered).to match(/6317571761/)
+    expect(rendered).to match(/8506482425/)
+    expect(rendered).to match(/6102873673/)
 
 
-    expect(rendered).to match(/Label/)
-    expect(rendered).to match(/Address 1/)
-    expect(rendered).to match(/Address 2/)
-    expect(rendered).to match(/City/)
-    expect(rendered).to match(/State/)
-    expect(rendered).to match(/Zip/)
-    expect(rendered).to match(/Country/)
+    expect(rendered).to match(/Home/)
+    expect(rendered).to match(/The White House/)
+    expect(rendered).to match(/1600 Pennsylvania Avenue NW/)
+    expect(rendered).to match(/Washington/)
+    expect(rendered).to match(/DC/)
+    expect(rendered).to match(/20500/)
+    expect(rendered).to match(/USA/)
   end
 end

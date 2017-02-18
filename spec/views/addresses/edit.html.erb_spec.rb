@@ -3,26 +3,18 @@ require 'rails_helper'
 RSpec.describe "addresses/edit", type: :view do
   before(:each) do
     @customer = assign(:customer, Customer.create!(
-      :title => "MyString",
-      :first_name => "MyString",
-      :middle_name => "MyString",
-      :last_name => "MyString",
-      :email => "MyString",
-      :organization => "MyString",
-      :position => "MyString",
-      :cell_phone => "MyString",
-      :work_phone => "MyString",
-      :home_phone => "MyString",
-      :fax => "MyString"
+      :title => "Mr",
+      :first_name => "Barack",
+      :last_name => "Obama"
     ))
     @address = assign(:address, Address.create!(
-      :label => "MyString",
-      :address_1 => "MyString",
-      :address_2 => "MyString",
-      :city => "MyString",
-      :state => "MyString",
-      :zip => "MyString",
-      :country => "MyString",
+      :label => "Home",
+      :address_1 => "The White House",
+      :address_2 => "1600 Pennsylvania Avenue NW",
+      :city => "Washington",
+      :state => "DC",
+      :zip => "20500",
+      :country => "USA",
       :customer => @customer
     ))
   end
@@ -40,7 +32,7 @@ RSpec.describe "addresses/edit", type: :view do
 
       assert_select "input#address_city[name=?]", "address[city]"
 
-      assert_select "input#address_state[name=?]", "address[state]"
+      assert_select "select#address_state[name=?]", "address[state]"
 
       assert_select "input#address_zip[name=?]", "address[zip]"
 

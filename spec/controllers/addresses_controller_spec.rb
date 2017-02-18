@@ -22,17 +22,9 @@ RSpec.describe AddressesController, type: :controller do
 
   before(:each) do
     @customer = Customer.create!(
-      :title => "MyString",
-      :first_name => "MyString",
-      :middle_name => "MyString",
-      :last_name => "MyString",
-      :email => "MyString",
-      :organization => "MyString",
-      :position => "MyString",
-      :cell_phone => "MyString",
-      :work_phone => "MyString",
-      :home_phone => "MyString",
-      :fax => "MyString"
+      :title => "Mr",
+      :first_name => "Barack",
+      :last_name => "Obama"
     )
   end
 

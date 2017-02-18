@@ -3,17 +3,17 @@ require 'rails_helper'
 RSpec.describe "customers/new", type: :view do
   before(:each) do
     assign(:customer, Customer.new(
-      :title => "MyString",
-      :first_name => "MyString",
-      :middle_name => "MyString",
-      :last_name => "MyString",
-      :email => "MyString",
-      :organization => "MyString",
-      :position => "MyString",
-      :cell_phone => "MyString",
-      :work_phone => "MyString",
-      :home_phone => "MyString",
-      :fax => "MyString"
+      :title => 'Mr',
+      :first_name => 'Barack',
+      :middle_name => 'Hussein',
+      :last_name => 'Obama',
+      :email => 'barack@whitehouse.gov',
+      :organization => 'Government',
+      :position => 'President',
+      :cell_phone => '6238155363',
+      :work_phone => '6317571761',
+      :home_phone => '8506482425',
+      :fax => '6102873673'
     ))
   end
 
