@@ -50,7 +50,7 @@
                 </div>
                 <address>
                   <%= address.address_1 %> <br>
-                  <%= address.address_2 %> <%= raw "<br/>" if address.address_2.length > 0 %>
+                  <%= address.address_2 %> <%= raw "<br/>" if !address.address_2.blank? %>
                   <%= address.city %>, <%= address.state %> <%= address.zip %> <br>
                   <%= address.country %>
                 </address>
