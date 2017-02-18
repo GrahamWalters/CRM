@@ -1,15 +1,5 @@
 <%= bootstrap_form_for([customer, address], layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |f| %>
-  <% if address.errors.any? %>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</strong>
-        <ul>
-        <% address.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-    </div>
-  <% end %>
+  <%= f.alert_message "Please fix the errors below." %>
 
   <%= f.text_field :label %>
 

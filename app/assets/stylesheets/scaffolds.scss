@@ -11,3 +11,7 @@ body {
 .alert {
   margin-top: 2rem;
 }
+
+.alert-danger > p:first-child {
+  font-weight: 800;
+}
