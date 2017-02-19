@@ -7,4 +7,8 @@ class Customer < ApplicationRecord
 
   validates :email, :email_format => { allow_nil: true, allow_blank: true }
 
+  validates :cell_phone, length: { maximum: 20 }
+  validates :work_phone, length: { maximum: 20 }
+  validates :home_phone, length: { maximum: 20 }
+  validates :fax, length: { maximum: 20 }
 end

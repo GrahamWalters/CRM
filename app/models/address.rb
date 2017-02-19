@@ -6,8 +6,8 @@ class Address < ApplicationRecord
   validates :address_2, presence: false, length: { maximum: 100 }
   validates :city, presence: true, length: { maximum: 35 }
   validates :state, presence: true, length: { is: 2 }
-  validates :zip, presence: true, length: { maximum: 5 }
-  validates :country, presence: true, length: { maximum: 100 }
+  validates :zip, presence: true, length: { maximum: 10 }
+  validates :country, presence: true
 
   STATE_SELECT_OPTIONS = [
     [ "Alabama", "AL" ],

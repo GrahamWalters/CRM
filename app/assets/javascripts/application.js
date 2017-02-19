@@ -36,11 +36,10 @@ var ADDRESS_VALIDATION_RULES = {
   },
   'address[zip]': {
     required: true,
-    maxlength: 5
+    maxlength: 10
   },
   'address[country]': {
-    required: true,
-    maxlength: 100
+    required: true
   }
 };
 
@@ -58,6 +57,18 @@ var CUSTOMER_VALIDATION_RULES = {
   },
   'customer[email]': {
     email: true
+  },
+  'customer[cell_phone]': {
+    maxlength: 20
+  },
+  'customer[work_phone]': {
+    maxlength: 20
+  },
+  'customer[home_phone]': {
+    maxlength: 20
+  },
+  'customer[fax]': {
+    maxlength: 20
   }
 };
 
