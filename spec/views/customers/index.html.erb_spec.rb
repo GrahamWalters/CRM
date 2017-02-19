@@ -16,10 +16,8 @@ RSpec.describe "customers/index", type: :view do
         :title => 'Mr',
         :first_name => 'Barack',
         :last_name => 'Obama',
-        :email => 'barack@whitehouse.gov',
         :organization => 'Government',
         :position => 'President',
-        :cell_phone => '6238155363'
       )
     ])
   end
@@ -29,9 +27,7 @@ RSpec.describe "customers/index", type: :view do
     assert_select "tr>td", :text => "Mr".to_s, :count => 2
     assert_select "tr>td", :text => "Barack".to_s, :count => 2
     assert_select "tr>td", :text => "Obama".to_s, :count => 2
-    assert_select "tr>td", :text => "barack@whitehouse.gov".to_s, :count => 2
     assert_select "tr>td", :text => "Government".to_s, :count => 2
     assert_select "tr>td", :text => "President".to_s, :count => 2
-    assert_select "tr>td", :text => "6238155363".to_s, :count => 2
   end
 end

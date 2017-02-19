@@ -9,13 +9,9 @@
 
   <%= f.text_field :last_name %>
 
-  <%= f.email_field :email %>
-
-  <%= f.date_select :dob, start_year: Date.today.year - 100, end_year: Date.today.year, label: 'Date of Birth' %>
+  <%= f.text_field :position %>
 
   <%= f.text_field :organization %>
-
-  <%= f.text_field :position %>
 
   <%= f.text_field :cell_phone %>
 
@@ -24,6 +20,10 @@
   <%= f.text_field :home_phone %>
 
   <%= f.text_field :fax %>
+
+  <%= f.email_field :email %>
+
+  <%= f.date_select :dob, start_year: Date.today.year - 100, end_year: Date.today.year, label: 'Date of Birth' %>
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
