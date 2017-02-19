@@ -15,3 +15,7 @@ body {
 .alert-danger > p:first-child {
   font-weight: 800;
 }
+
+label.required:after {
+  content:" *";
+}

@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(customer, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |f| %>
+<%= bootstrap_form_for(customer, layout: :horizontal) do |f| %>
   <%= f.alert_message "Please fix the errors below." %>
 
   <%= f.text_field :title %>
@@ -9,7 +9,7 @@
 
   <%= f.text_field :last_name %>
 
-  <%= f.text_field :email %>
+  <%= f.email_field :email %>
 
   <%= f.date_select :dob, start_year: Date.today.year - 100, end_year: Date.today.year, label: 'Date of Birth' %>
 

@@ -59,4 +59,4 @@ gem 'rspec-rails', :group => [:development, :test]
 gem 'rails-controller-testing'
 
 gem 'validates_email_format_of'
-
+gem 'jquery-validation-rails'
